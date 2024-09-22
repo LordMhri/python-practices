@@ -1,34 +1,26 @@
 def trap(height:list[int]) -> int:
-    #two loops one for finding the right and left max for a specified index
-    #find left max
-    leftMaxElements = [0]
-    leftMax = 0
-    rightMaxElements = [0]
-    rightMax = 0
-    for i in range(1,len(height)):
-        currMax = height[i-1]
-        leftMax = max(currMax,leftMax)
-        leftMaxElements.append(leftMax)
-        
-    #start from the second most right element and go to the start
-    for i in range(len(height)-2,-1,-1): 
-        currMax = height[i+1]
-        rightMax = max(currMax,rightMax)
-        rightMaxElements.append(rightMax)
-    rightMaxElements.reverse()
-    
-
-    #loop for calculation of trapped water
+    #apparently you can calculate the left and right max on the fly
+    #not intuitive
     ans = 0
-    for i in range(len(height)):
-        #the bound is the minimum of the left and right bounds
-        bound = min(leftMaxElements[i],rightMaxElements[i])
-        #if the bound - current height is < 0 we've encountered a peak
-        #else it is a valley so we can calculate how much it would hold
-        if bound - height[i] >= 0:
-            ans += bound-height[i]
+    leftMax = 0
+    rightMax = 0
+    left = 0
+    right = len(height) - 1
+    
+    while left <= right:
+         #check on which boundary collected water depends on
+        if height[left] < height[right]: #height at left is smaller therfore it depends on the left one
+            leftMax = max(height[left],leftMax) #update leftMax with the max of the current one and the previous max
+            ans += leftMax - height[left] #update answer with the difference between curr left max and curr element
+            left += 1 #move left pointer forward
+        else:
+            rightMax = max(height[right],rightMax)
+            ans += rightMax - height[right]
+            right -= 1
+
             
     return ans
+
 height = [0,1,0,2,1,0,1,3,2,1,2,1]    
 print(trap(height=height))  
     
