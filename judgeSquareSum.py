@@ -2,15 +2,15 @@ import math
 
 def judgeSquareSum(c:int)-> bool:
     bound = int(math.sqrt(c))
-    nums = [i for i in range(0,bound)] 
-    right = len(nums) -1 
+    right = bound 
     left = 0
-    if c == 4: 
-        return True
+    
     while left <= right:
-        if nums[left] ** 2 + nums[right] ** 2  < c:
+        leftSquared =left ** 2
+        rightSquared = right ** 2
+        if leftSquared + rightSquared  < c:
             left += 1
-        elif nums[left] ** 2 + nums[right] ** 2 > c:
+        elif leftSquared + rightSquared > c:
             right -= 1
         else:
             return True
