@@ -13,7 +13,7 @@ def subarraysDivByK(nums: list[int], k: int) -> int:
         if mod in check:
             ans += check[mod]
 
-        check[prefix] += 1
+        check[mod] += 1
 
     return ans       
 
