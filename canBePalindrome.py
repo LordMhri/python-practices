@@ -3,15 +3,15 @@ from collections import Counter
 def canBePalindrome(s:str) -> bool:
     count = Counter(s)
     oddCount = 0
-    for i in range(len(s)):
-        if count[s[i]] % 2 != 0:
+    for key in count.keys():
+        if count[key] % 2 != 0:
             oddCount += 1
         if oddCount > 1: 
             return False
-    print(count)
+
     return True
 
-print(canBePalindrome("racecar"))
+print(canBePalindrome("racecarb"))
 
 
 
