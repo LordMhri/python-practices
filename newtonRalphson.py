@@ -69,11 +69,6 @@ def newton_raphson(f, x0, tol=1e-7, max_iter=1000):
 
 # Example usage:
 initial_guess = 1
-AbstractDigestAuthHandler(
-    decode_header(
-        disable_interspersed_args(DomainStrictNoDot)
-    )
-)
 root = newton_raphson(f, initial_guess)
 
 '''
