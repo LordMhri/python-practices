@@ -1,5 +1,6 @@
 from collections import Counter
 
+
 def checkInclusion(s1: str, s2: str) -> bool:
     freq = Counter(s1)
     freq2 = Counter()
@@ -21,4 +22,4 @@ def checkInclusion(s1: str, s2: str) -> bool:
 
 s1 = "ab"
 s2 = "eidbaooo"
-checkInclusion(s1,s2)
+print(checkInclusion(s1,s2))
